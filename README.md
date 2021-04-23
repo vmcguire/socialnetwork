@@ -1,176 +1,38 @@
-# socialnetwork
+[![License: Open Data Commons Attribution](https://img.shields.io/badge/License-ODC_BY-brightgreen.svg)](https://opendatacommons.org/licenses/by/)
 
-User Story
-AS A social media startup
-I WANT an API for my social network that uses a NoSQL database
-SO THAT my website can handle large amounts of unstructured data
+# Social Network
 
-Users can create, read, update, and delete thoughts in a database.
+## Week 18 Challenge
 
-Users can create, and delete reactions to thoughts in a database.
+### Victor McGuire
 
-Users can add and remove friends in the database.
+## Table of Contents
 
-Acceptance Criteria
+1. [Description](#Description)
+2. [Installation Instructions](#Installation-Instructions)
+3. [Usage Instructions](#Usage-Instructions)
+4. [Questions](#Questions)
 
-GIVEN a social network API
+## Description
 
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
+The purpose of this project is to create a social media application where users can be added and their thoughts stored. Users can also becoming friends and remove friends. Lastly, reactions to thoughts can occur, and they can be deleted as well.
 
-WHEN I open API GET routes in Insomnia Core for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
+## Installation Instructions
 
-WHEN I test API POST, PUT, and DELETE routes in Insomnia Core
-THEN I am able to successfully create, update, and delete users and thoughts in my database
+Access the application by accessing it here and downloading the files: https://github.com/vmcguire/socialnetwork
 
-WHEN I test API POST and DELETE routes in Insomnia Core
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+You will also need express, node_modules, and mongoose.
 
-Mock-Up
-The following animations show examples of the application's API routes being tested in Insomnia Core.
+## Usage Instructions
 
-The following animation shows GET routes to return all users and all thoughts being tested in Insomnia Core:
+Demonstration video of usage is here: https://drive.google.com/file/d/1kyrOD7ryUsmqpdiENTeco-xcd2Hwth-Y/view and https://drive.google.com/file/d/12knAyPzMoBq_4WRPqXgFdBDJVxsBWZ2H/view
 
-Demo of GET routes to return all users and all thoughts being tested in Insomnia Core.
+Navigate to the root folder of the application where the server.js file sits.
 
-The following animation shows GET routes to return a single user and a single thought being tested in Insomnia Core:
+Feel free to manipulate with insomnia core in accordance with the videos provided herein.
 
-Demo that shows GET routes to return a single user and a single thought being tested in Insomnia Core.
+## Questions
 
-The following animation shows the POST, PUT, and DELETE routes for users being tested in Insomnia Core:
+Please visit my repo here for any further questions: <https://github.com/vmcguire>
 
-Demo that shows the POST, PUT, and DELETE routes for users being tested in Insomnia Core.
-
-In addition to this, your walkthrough video should show the POST, PUT, and DELETE routes for thoughts being tested in Insomnia Core.
-
-The following animation shows the POST and DELETE routes for a user’s friend list being tested in Insomnia Core:
-
-Demo that shows the POST and DELETE routes for a user’s friend list being tested in Insomnia Core.
-
-In addition to this, your walkthrough video should show the POST and DELETE routes for reactions to thoughts being tested in Insomnia Core.
-
-Getting Started
-Use the following guidelines to set up your models and API routes:
-
-Models
-User
-
-username
-
-String
-Unique
-Required
-Trimmed
-email
-
-String
-Required
-Unique
-Must match a valid email address (look into Mongoose's matching validation)
-thoughts
-
-Array of \_id values referencing the Thought model
-friends
-
-Array of \_id values referencing the User model (self-reference)
-Schema Settings
-
-Create a virtual called friendCount that retrieves the length of the user's friends array field on query.
-
-Thought
-
-thoughtText
-
-String
-Required
-Must be between 1 and 280 characters
-createdAt
-
-Date
-Set default value to the current timestamp
-Use a getter method to format the timestamp on query
-username (The user that created this thought)
-
-String
-Required
-reactions (These are like replies)
-
-Array of nested documents created with the reactionSchema
-Schema Settings
-
-Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
-
-Reaction (SCHEMA ONLY)
-
-reactionId
-
-Use Mongoose's ObjectId data type
-Default value is set to a new ObjectId
-reactionBody
-
-String
-Required
-280 character maximum
-username
-
-String
-Required
-createdAt
-
-Date
-Set default value to the current timestamp
-Use a getter method to format the timestamp on query
-Schema Settings
-
-This will not be a model, but rather will be used as the reaction field's subdocument schema in the Thought model.
-
-API Routes
-/api/users
-
-GET all users
-
-GET a single user by its \_id and populated thought and friend data
-
-POST a new user:
-
-// example data
-{
-"username": "lernantino",
-"email": "lernantino@gmail.com"
-}
-PUT to update a user by its \_id
-
-DELETE to remove user by its \_id
-
-BONUS: Remove a user's associated thoughts when deleted.
-
-/api/users/:userId/friends/:friendId
-
-POST to add a new friend to a user's friend list
-
-DELETE to remove a friend from a user's friend list
-
-/api/thoughts
-
-GET to get all thoughts
-
-GET to get a single thought by its \_id
-
-POST to create a new thought (don't forget to push the created thought's \_id to the associated user's thoughts array field)
-
-// example data
-{
-"thoughtText": "Here's a cool thought...",
-"username": "lernantino",
-"userId": "5edff358a0fcb779aa7b118b"
-}
-PUT to update a thought by its \_id
-
-DELETE to remove a thought by its \_id
-
-/api/thoughts/:thoughtId/reactions
-
-POST to create a reaction stored in a single thought's reactions array field
-
-DELETE to pull and remove a reaction by the reaction's reactionId value
+My email address is: <victor.mcguire@gmail.com>
